@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promotion Prediction</title>
+
+  <style>
+    /* Reset and layout */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url("{{ url_for('static', filename='predict_bg.jpg') }}") no-repeat center center/cover;
+      background-attachment: fixed;
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+    }
+
+    .navbar h1 {
+      color: white;
+      font-size: 22px;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .navbar ul li a:hover,
+    .navbar ul li a.active {
+      color: #dcdcdc;
+    }
+
+    /* Form container */
+    .form-container {
+      width: 450px;
+      margin: 70px auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: white;
+      font-size: 26px;
+    }
+
+    /* Form fields */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: white;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
+      background-color: #222;
+      color: white;
+    }
+
+    /* Button styling */
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0099cc;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0077aa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Employee Promotion Prediction Using ML</h1>
+    <ul>
+      <li><a href="{{ url_for('index') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('predict') }}" class="active">Predict</a></li>
+    </ul>
+  </div>
+
+  <!-- Form Section -->
+  <div class="form-container">
+    <h2>Promotion Prediction Form</h2>
+    <form action="{{ url_for('predict') }}" method="post">
+
+      <div class="form-group">
+        <label>Department</label>
+        <select name="department" required>
+          <option value="">Select Department</option>
+          <option value="1">Sales & Marketing</option>
+          <option value="2">Operations</option>
+          <option value="3">Technology</option>
+          <option value="4">Procurement</option>
+          <option value="5">Finance</option>
+          <option value="6">HR</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Education</label>
+        <select name="education" required>
+          <option value="">Select Education</option>
+          <option value="1">Bachelor's</option>
+          <option value="2">Master's</option>
+          <option value="3">Below Secondary</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>No. of Trainings</label>
+        <input type="number" name="no_of_trainings" min="0" placeholder="Enter number of trainings" required>
+      </div>
+
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" name="age" min="18" placeholder="Enter age" required>
+      </div>
+
+      <div class="form-group">
+        <label>Previous Year Rating (1-5)</label>
+        <input type="number" name="previous_year_rating" min="1" max="5" placeholder="Enter rating" required>
+      </div>
+
+      <div class="form-group">
+        <label>Length of Service (in years)</label>
+        <input type="number" name="length_of_service" min="0" placeholder="Enter years of service" required>
+      </div>
+
+      <div class="form-group">
+        <label>KPIs_met &gt;80%</label>
+        <select name="KPIs" required>
+          <option value="">Select</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Awards Won</label>
+        <select name="awards_won" required>
+          <option value="">Select</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Average Training Score</label>
+        <input type="number" name="avg_training_score" min="0" placeholder="Enter training score" required>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
