@@ -10,21 +10,11 @@ Bias Mitigation: Employs the SMOTE technique during training to handle the class
 Three-Tier Architecture: Structured into Data, Application (Flask), and Presentation tiers for scalability and maintainability.
 Real-Time Scoring: Deployed as a lightweight Flask web application for instant prediction after user input.
 
-**Technical Stack**
-Prediction Model
-  Technology: Random Forest Classifier (Scikit-learn)
-  Role: Selected for superior accuracy, stability, and reliable prediction.
-Data Handling
-  Technology: pandas, numpy, imblearn (SMOTE)
-  Role: Used for cleaning, pre-processing, and crucial imbalance handling of the data.
-Web Framework
-  Technology: Flask
-  Role: Acts as the lightweight server for hosting the prediction API.
-Model Persistence
-  echnology: joblib
-  Role: Used to serialize and load the trained model (model.joblib) for deployment.
-Front-End
-  echnology: HTML/CSS
-  Role: Provides the user interface for inputting employee features and displaying results.
+**Solution and Technical Architecture**
+Our solution is centered around the Random Forest Classifier, an ensemble machine learning model selected for its high accuracy, stability, and robust handling of complex, non-linear employee data. The entire system is structured as a three-tier, decoupled architecture. The Data Tier handles all analytical processing, including comprehensive data cleaning, visualization, and crucially, using the SMOTE technique to manage the severe class imbalance inherent in promotion datasets. Once trained, the model is serialized using joblib.
 
+The application is deployed using a lightweight Flask web framework, which serves as the Application Tier (middleware). This server loads the pre-trained model into memory and acts as a prediction API. The Presentation Tier, a simple HTML/CSS interface, allows HR personnel to input an employee's current features. The system then processes the input in real-time and instantly returns an objective probability score (Promoted/Not Promoted), offering immediate, data-backed insights for advancement decisions.
+
+**Strategic Impact**
+By implementing this predictive solution, organizations gain a strategic tool for talent retention and scalability. The system provides a transparent and quantifiable score for promotion readiness, eliminating personal bias and ensuring fair recognition of achievement. This leads directly to higher employee engagement and commitment. Furthermore, the automation of the initial screening process significantly reduces managerial time and resources, making the talent review process more efficient and easily scalable across large departments.
 
